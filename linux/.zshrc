@@ -1,0 +1,72 @@
+# Created by newuser for 5.3.1
+
+# zsh
+setopt SHARE_HISTORY
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt IGNORE_EOF
+setopt NO_FLOW_CONTROL
+setopt NO_BEEP
+
+#アーチタワー
+screenfetch
+
+#プラグイン補完機能拡張
+fpath=(/usr/local/share/zsh-completions(N-/) $fpath)
+
+#tabの補助強化
+autoload -Uz compinit
+compinit -u
+
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:**' word-chars " /=;@:{},|"
+zstyle 'zle:*' word-style unspecified
+
+#名前表示：下に移動
+
+#コマンド履歴
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+#プラグイン
+[[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#色付け
+autoload -Uz colors
+colors
+
+# プロンプト
+# 1行表示
+# PROMPT="%~ %# "
+# 2行表示
+PROMPT="%{${fg[green]}%}%n@%m%{${reset_color}%} %~%# "
+
+#ls
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+#シンタックスハイライト
+if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+#tmux
+#Autostart if not already in tmux.
+
+
+#if [[ ! -n $TMUX ]]; then
+#  tmux new-session
+#fi
+
+
