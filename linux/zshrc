@@ -65,8 +65,8 @@ fi
 #Autostart if not already in tmux.
 
 
-#if [[ ! -n $TMUX ]]; then
-#  tmux new-session
-#fi
+if [[ ! -n $TMUX ]]; then
+	tmux new-session && exit
+fi
 
 
