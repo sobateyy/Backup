@@ -1,0 +1,3 @@
+<Files ~ ".(dwtlphp)$">
+Deny form all
+</File>
